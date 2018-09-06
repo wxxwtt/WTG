@@ -97,6 +97,7 @@ export default {
   overflow: hidden;
   height: 0;
   padding-bottom: 50%;
+  margin-bottom: .15rem;
   .icon {
     overflow: hidden;
     height: 0;

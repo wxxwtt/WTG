@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import "normalize.css"
 import './assets/style/font/iconfont.css'
+import './assets/style/css/border.css'
 // 引入swiper
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
