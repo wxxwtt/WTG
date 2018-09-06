@@ -29,11 +29,11 @@ export default {
     }
     .search {
       flex: 1;
-      height: .34rem;
-      margin-top: .05rem;
+      height: .3rem;
+      margin-top: .07rem;
       background: #fff;
       border-radius: .05rem;
-      line-height: .34rem;
+      line-height: .3rem;
       color: #666;
     }
   }
