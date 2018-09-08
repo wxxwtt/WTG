@@ -2,12 +2,12 @@
 
   <div>
     <h3 class="like-title">猜你喜欢</h3>
-    <div class="likeList border-bottom" v-for="item in likeList" :key="item.id">
+    <div class="likeList border-bottom" v-for="item in recommend" :key="item.id">
         <div class="img-box">
           <img :src="item.imgUrl" alt="">
         </div>
         <div class="attractions">
-          <h4 class="attractions-title">{{item.name}}</h4>
+          <h4 class="attractions-title">{{item.title}}</h4>
           <p class="desc">{{item.desc}}</p>
         </div>
     </div>
@@ -16,24 +16,12 @@
 <script>
 export default {
   name: "HomeRecommend",
+  props:{
+    recommend:Array
+  },
   data() {
     return {
-      likeList: [
-        {
-          id: "0001",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg",
-          name: "北京欢乐谷",
-          desc:"数百年的宫廷庙宇，至今依旧威严霸气"
-        },
-        {
-          id: "0002",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1708/2b/2b3b94de99c0a425a3.img.jpg_200x200_2458ffb2.jpg",
-          name: "北京清凉避暑胜地",
-          desc:"游客寻幽探险、休闲度假的绝好去处"
-        }
-      ]
+      
     };
   }
 };

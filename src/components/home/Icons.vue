@@ -1,6 +1,6 @@
 <template>
  <div>
-    <swiper >
+    <swiper :options="swiperOption">
           <!-- slides -->
           <swiper-slide v-for="(page,index) in pages" :key="index">
                 <div class="icons">
@@ -21,65 +21,20 @@
 <script>
 export default {
   name: "Icons",
+  props:{
+    icon:Array
+  },
   data() {
     return {
-      iconsList: [
-        
-        {
-          id: "0002",
-          name: "景点门票",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png"
-        },
-        {
-          id: "0003",
-          name: "景点门票",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png"
-        },
-        {
-          id: "0004",
-          name: "景点门票",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png"
-        },
-        {
-          id: "0005",
-          name: "景点门票",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png"
-        },
-        {
-          id: "0006",
-          name: "景点门票",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png"
-        },
-        {
-          id: "0007",
-          name: "景点门票",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png"
-        },
-        {
-          id: "0008",
-          name: "景点门票",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png"
-        },
-        {
-          id: "0009",
-          name: "景点门票",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png"
-        }
-      ]
+      swiperOption:{
+        autoplay:false
+      }
     };
   },
   computed: {
     pages() {
       let pages = [];
-      this.iconsList.forEach((item, index) => {
+      this.icon.forEach((item, index) => {
         let page = Math.floor(index / 8);
         if (!pages[page]) {
           pages[page] = [];

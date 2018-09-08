@@ -9,7 +9,9 @@ import './assets/style/css/border.css'
 // 引入swiper
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
-Vue.use(VueAwesomeSwiper, /* { default global options } */)
+import Axios from "axios"
+Vue.prototype.$axios = Axios
+Vue.use(VueAwesomeSwiper, /* { default global options } */Axios)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
