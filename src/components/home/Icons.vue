@@ -8,7 +8,7 @@
                     <div class="icon-img-box">
                       <img :src="item.imgUrl" alt="">
                       </div>
-                    <p>{{item.name}}</p>
+                    <p>{{item.desc}}</p>
                 </div>
           </div>
           </swiper-slide>
@@ -66,7 +66,7 @@ export default {
       top: 0;
       right: 0;
       bottom: 0;
-      padding: 0.15rem;
+      padding: 0.2rem;
       box-sizing: border-box;
       img {
         width: 100%;

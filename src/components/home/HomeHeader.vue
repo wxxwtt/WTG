@@ -2,7 +2,10 @@
   <div class="header">
     <div class="back"><span class="iconfont icon-fanhui"></span></div>
     <div class="search"><span class="iconfont icon-sousuo"></span>搜索</div>
-    <div class="city">城市 <span class="iconfont icon-sanjiao"></span></div>
+    <router-link to="/city">
+       <div class="city">北京 <span class="iconfont icon-sanjiao"></span></div>
+    </router-link>
+   
   </div>
 </template>
 <script>
@@ -26,6 +29,7 @@ export default {
     color: #fff;
     .back,.city {
       padding: 0 .1rem;
+      color: #fff;
     }
     .search {
       flex: 1;
