@@ -34,9 +34,7 @@ export default {
         .then(res => {
           // console.log(res);
           let data = res.data.data;
-          console.log(data)
           if(res.data.ret){
-            
             this.swiperList = data.swiperList;
             this.iconList = data.iconList;
             this.recommendList = data.recommendList

@@ -1,31 +1,53 @@
 <template>
-  <div class="city">
-    <router-link to="/">
-      <span class="iconfont icon-fanhui" ></span>
-    </router-link>
-     城市选择
-    </div>
+  <div>
+    <city-header></city-header>
+    <city-search></city-search>
+    <city-list :hotCities="hotCities" :alphabet="alphabetObj"></city-list>
+    <city-alphabet :alphabet="alphabetObj"></city-alphabet>
+  </div>
 </template>
 <script>
+import cityHeader from './Header';
+import citySearch from './Search';
+import cityList from './list';
+import cityAlphabet from './Alphabet';
 export default {
-  name: "city"
+  name: "city",
+  components: {
+    cityHeader,
+    citySearch,
+    cityList,
+    cityAlphabet
+  },
+  data(){
+    return {
+      hotCities:[],
+      alphabetObj:{}
+    }
+  },
+  created(){
+    this.getCityList()
+  },
+  methods : {
+    getCityList(){
+      this.$axios.get('/api/city.json')
+      .then(res => {
+        console.log(res);
+       if(res.data.ret){
+         this.hotCities = res.data.data.hotCities;
+         this.alphabetObj = res.data.data.cities;
+         console.log(this.alphabetObj )
+       }
+        
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
 @import "@/assets/style/scss/base.scss";
-.city {
-  position: relative;
-  line-height: 0.44rem;
-  height: 0.44rem;
-  background: $bgcolor;
-  text-align: center;
-  color: #fff;
-  font-size: 0.16rem;
-  .icon-fanhui {
-    color: #fff;
-    position: absolute;
-    left: .15rem;
-    top: 0;
-  }
-}
+
 </style>
