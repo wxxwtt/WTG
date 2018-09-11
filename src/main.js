@@ -7,6 +7,8 @@ import "normalize.css"
 import './assets/style/font/iconfont.css'
 import './assets/style/css/border.css'
 import './assets/style/css/global.css'
+// 引入vuex
+import store from './store'
 // 引入swiper
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
@@ -19,6 +21,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -1,7 +1,7 @@
 <template>
   <div>
     <city-header></city-header>
-    <city-search></city-search>
+    <city-search :alphabet="alphabetObj"></city-search>
     <city-list :hotCities="hotCities" :alphabet="alphabetObj" :CAlphabet="CAlphabet"></city-list>
     <city-alphabet :alphabet="alphabetObj" @changeAlphabet="selectedAlphabet"></city-alphabet>
   </div>
@@ -33,13 +33,10 @@ export default {
     getCityList(){
       this.$axios.get('/api/city.json')
       .then(res => {
-        console.log(res);
        if(res.data.ret){
          this.hotCities = res.data.data.hotCities;
          this.alphabetObj = res.data.data.cities;
-         console.log(this.alphabetObj )
        }
-        
       })
       .catch(err => {
         console.log(err);

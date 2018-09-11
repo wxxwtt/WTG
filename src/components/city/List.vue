@@ -5,13 +5,13 @@
       <div class="area">
         <p>当前城市</p>
         <div class="city-btn">
-          <button>北京</button>
+          <button>{{$store.state.cityObj.name}}</button>
         </div>
       </div>
       <div class="area">
           <p>热门城市</p>
           <div class="city-btn" v-for="item in hotCities" :key="item.id">
-            <button>{{item.name}}</button>
+            <button @click="changeC(item)">{{item.name}}</button>
           </div>
       </div>
         <div class="area" 
@@ -22,7 +22,11 @@
           <p>{{key}}</p>
           <div class="list">
             <ul>
-              <li class="border-bottom" v-for="area in item" :key="area.id">
+              <li class="border-bottom" 
+                v-for="area in item"
+                :key="area.id"
+                @click="changeC(area)"
+              >
                 {{area.name}}
               </li>
             </ul>
@@ -43,7 +47,15 @@ export default {
     CAlphabet : String
   },
   mounted(){
-    this.scroll = new BScroll(this.$refs.wrapper)
+    this.scroll = new BScroll(this.$refs.wrapper,{
+      'click':true
+    })
+  },
+  methods : {
+    changeC(cityObj){
+      this.$store.commit('changecity',cityObj);
+      this.$router.push('/')
+    }
   },
   watch : {
     CAlphabet () {

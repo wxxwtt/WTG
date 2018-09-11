@@ -3,7 +3,7 @@
     <div class="back"><span class="iconfont icon-fanhui"></span></div>
     <div class="search"><span class="iconfont icon-sousuo"></span>搜索</div>
     <router-link to="/city">
-       <div class="city">北京 <span class="iconfont icon-sanjiao"></span></div>
+       <div class="city">{{$store.state.cityObj.name}}<span class="iconfont icon-sanjiao"></span></div>
     </router-link>
    
   </div>
