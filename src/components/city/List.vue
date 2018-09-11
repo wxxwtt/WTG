@@ -14,7 +14,11 @@
             <button>{{item.name}}</button>
           </div>
       </div>
-        <div class="area" v-for="(item, key) of alphabet" :key="key">
+        <div class="area" 
+          v-for="(item, key) of alphabet" 
+          :key="key" 
+          :ref="key"
+        >
           <p>{{key}}</p>
           <div class="list">
             <ul>
@@ -35,11 +39,19 @@ export default {
   name : "CityList",
   props:{
     hotCities:Array,
-    alphabet:Object
+    alphabet:Object,
+    CAlphabet : String
   },
   mounted(){
-    console.log(this.alphabet)
-    let scroll = new BScroll(this.$refs.wrapper)
+    this.scroll = new BScroll(this.$refs.wrapper)
+  },
+  watch : {
+    CAlphabet () {
+      if (this.CAlphabet) {
+        const element = this.$refs[this.CAlphabet][0]
+        this.scroll.scrollToElement(element,300)
+      }
+    }
   }
 }
 </script>

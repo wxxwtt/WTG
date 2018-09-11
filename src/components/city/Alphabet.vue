@@ -1,6 +1,14 @@
 <template>
   <ul class="alphabet">
-    <li v-for="(item,key) in alphabet" :key="key">{{key}}</li>
+    <li 
+      v-for="item in letters" 
+      :key="item"
+      @click="chang"
+      @touchstart="handleTouchStart"
+      @touchmove="handleTouchMove"
+      @touchend="handleTouchEnd"
+      :ref="item"
+      >{{item}}</li>
   </ul>
 </template>
 <script>
@@ -8,6 +16,51 @@
     name : 'Alphabet',
     props : {
       alphabet : Object
+    },
+    data(){
+      return {
+        touchStatus:false,
+        startY:0,
+        timer:null
+      }
+    },
+    updated(){
+      this.startY = this.$refs['A'][0].offsetTop;
+    },
+    methods : {
+      chang(e){
+        this.$emit('changeAlphabet',e.target.innerText)
+      },
+      handleTouchStart(){
+        this.touchStatus = true;
+      },
+      handleTouchMove(e){
+        if(this.touchStatus){
+          if(this.timer){
+            clearTimeout(this.timer)
+          }
+          this.timer = setTimeout(()=>{
+            let touchY = e.touches[0].clientY - 88
+            let index = Math.floor((touchY - this.startY) / 20);
+            if(index >= 0 && index < this.letters.length){
+              this.$emit('changeAlphabet',this.letters[index])
+            }
+          },16)
+
+        }
+      },
+      handleTouchEnd(){
+        this.touchStatus = false;
+      }
+    },
+    computed : {
+      letters(){
+        const letter = [];
+        for(let i in this.alphabet){
+          letter.push(i)
+        }
+        return letter;
+      }
     }
   }
 </script>

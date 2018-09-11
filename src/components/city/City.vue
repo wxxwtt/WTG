@@ -2,8 +2,8 @@
   <div>
     <city-header></city-header>
     <city-search></city-search>
-    <city-list :hotCities="hotCities" :alphabet="alphabetObj"></city-list>
-    <city-alphabet :alphabet="alphabetObj"></city-alphabet>
+    <city-list :hotCities="hotCities" :alphabet="alphabetObj" :CAlphabet="CAlphabet"></city-list>
+    <city-alphabet :alphabet="alphabetObj" @changeAlphabet="selectedAlphabet"></city-alphabet>
   </div>
 </template>
 <script>
@@ -22,7 +22,8 @@ export default {
   data(){
     return {
       hotCities:[],
-      alphabetObj:{}
+      alphabetObj:{},
+      CAlphabet : "",
     }
   },
   created(){
@@ -43,8 +44,12 @@ export default {
       .catch(err => {
         console.log(err);
       })
-    }
-  }
+    },
+    selectedAlphabet(alphabet){
+      this.CAlphabet = alphabet;
+    } 
+  },
+
 };
 </script>
 <style lang="scss" scoped>
