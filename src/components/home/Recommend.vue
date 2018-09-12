@@ -2,7 +2,8 @@
 
   <div>
     <h3 class="like-title">猜你喜欢</h3>
-    <div class="likeList border-bottom" v-for="item in recommend" :key="item.id">
+    <div>
+      <router-link  tag="li" :to="{name:'detail',query:{id:item.id}}" class="likeList border-bottom" v-for="item in recommend" :key="item.id">
         <div class="img-box">
           <img :src="item.imgUrl" alt="">
         </div>
@@ -10,6 +11,7 @@
           <h4 class="attractions-title">{{item.title}}</h4>
           <p class="desc">{{item.desc}}</p>
         </div>
+      </router-link>
     </div>
   </div>
 </template>

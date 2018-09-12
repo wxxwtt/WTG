@@ -13,7 +13,7 @@ module.exports = {
     // 代理配置
     proxyTable: {
       '/api':{ //路径
-        target:'http://192.168.31.124:8080',//目标接口地址
+        target:'http://localhost:8080',//目标接口地址
         secure:false, //是否支持https
         changeOrigin:true, //是否支持跨域
         pathRewrite:{ //路径重写 
@@ -24,7 +24,7 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: '192.168.31.124', // can be overwritten by process.env.HOST
+    host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

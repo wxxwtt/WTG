@@ -14,7 +14,8 @@
 </div>
 </template>
 <script>
-import BScroll from "better-scroll";
+import BScroll from "better-scroll"
+import {mapMutations} from 'vuex'
 export default {
   name: "Search",
   props: {
@@ -39,9 +40,11 @@ export default {
   },
   methods: {
     changeC(cityObj) {
-      this.$store.commit("changecity", cityObj);
+      // this.$store.commit("changecity", cityObj);
+      this.changecity(cityObj)
       this.$router.push("/");
-    }
+    },
+    ...mapMutations(['changecity'])
   },
   watch: {
     keyword() {
